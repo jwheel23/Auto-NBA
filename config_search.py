@@ -136,7 +136,7 @@ if 'cifar' in C.dataset:
         C.mode = 'soft'
 
 
-    C.pretrain_epoch = 30
+    C.pretrain_epoch = 15
     C.pretrain_aline = True
 
     if C.pretrain_aline:
@@ -162,7 +162,7 @@ if 'cifar' in C.dataset:
     C.image_width = 32
     C.save = "search"
 
-    C.nepochs = 90 + C.pretrain_epoch
+    C.nepochs = 45 + C.pretrain_epoch
     C.eval_epoch = 1
 
     C.lr_schedule = 'cosine'
@@ -393,4 +393,5 @@ elif C.dataset == 'imagenet':
 
 else:
     print('Wrong dataset.')
+
     sys.exit()

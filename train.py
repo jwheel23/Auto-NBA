@@ -43,6 +43,10 @@ from model_infer import FBNet_Infer
 
 from lr import LambdaLR
 
+import collections
+import collections.abc
+collections.Iterable = collections.abc.Iterable
+
 from thop import profile
 from thop.vision.basic_hooks import count_convNd
 
@@ -536,4 +540,5 @@ def save(model, model_path):
 
 if __name__ == '__main__':
     main() 
+
 

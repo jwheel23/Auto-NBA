@@ -9,7 +9,7 @@ import collections.abc
 collections.Iterable = collections.abc.Iterable
 
 from thop import profile
-from thop.count_hooks import count_convNd
+from thop.vision.basic_hooks import count_convNd
 
 import sys
 import os.path as osp
@@ -419,5 +419,6 @@ OPS = {
     'k5_e6' : lambda C_in, C_out, layer_id, stride, hetero=False: ConvBlock(C_in, C_out, layer_id, expansion=6, kernel_size=5, stride=stride, groups=1, hetero=hetero),
     'skip' : lambda C_in, C_out, layer_id, stride, hetero=False: Skip(C_in, C_out, layer_id, stride)
 }
+
 
 

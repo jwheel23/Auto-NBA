@@ -488,7 +488,7 @@ def main_worker(gpu, ngpus_per_node, config):
         if update_arch:
             torch.save(state, os.path.join(config.save, "arch.pt"))
 
-        save_architecture(model, os.path.join(config.save, "arch_discrete.pt"))'
+            save_architecture(model, os.path.join(config.save, "arch_discrete.pt"))'
       
         if config.efficiency_metric == 'latency':
             model_infer = FBNet_Infer(getattr(model.module, 'alpha'), getattr(model.module, 'beta'), config=config)
@@ -777,4 +777,5 @@ def save(model, model_path):
 
 if __name__ == '__main__':
     main() 
+
 

@@ -33,7 +33,7 @@ C.dist_url = 'tcp://eic-2019gpu5.ece.rice.edu:10001'  # url used to set up distr
 
 C.gpu = None
 
-C.dataset = 'imagenet'
+C.dataset = 'cifar100'
 
 if 'cifar' in C.dataset:
     """Data Dir and Weight Dir"""
@@ -241,4 +241,5 @@ elif C.dataset == 'imagenet':
 
 else:
     print('Wrong dataset.')
+
     sys.exit()

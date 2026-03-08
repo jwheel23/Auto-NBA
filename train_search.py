@@ -487,8 +487,6 @@ def main_worker(gpu, ngpus_per_node, config):
     if not config.multiprocessing_distributed or (config.multiprocessing_distributed and config.rank % ngpus_per_node == 0):
         if update_arch:
             torch.save(state, os.path.join(config.save, "arch.pt"))
-
-            save_architecture(model, os.path.join(config.save, "arch_discrete.pt"))'
       
         if config.efficiency_metric == 'latency':
             model_infer = FBNet_Infer(getattr(model.module, 'alpha'), getattr(model.module, 'beta'), config=config)
@@ -504,7 +502,8 @@ def main_worker(gpu, ngpus_per_node, config):
             
             logging.info("params = %fM, FLOPs = %fM, BitOPs = %fG", params / 1e6, flops / 1e6, bitops / 1e9)
             logging.info("FPS of Final Arch: %f", fps)
-
+          
+        save_architecture(model, os.path.join(config.save, "arch_discrete.pt"))'
 
 
 def train_iterwise(train_loader_model, train_loader_arch, model, architect, optimizer, lr_policy, logger, epoch, update_arch=True, epsilon_alpha=0, temp=1, arch_update_frec=1):
@@ -777,5 +776,6 @@ def save(model, model_path):
 
 if __name__ == '__main__':
     main() 
+
 
 

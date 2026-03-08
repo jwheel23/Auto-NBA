@@ -44,7 +44,7 @@ from model_infer import FBNet_Infer
 from lr import LambdaLR
 
 from thop import profile
-from thop.count_hooks import count_convNd
+from thop.vision.basic_hooks import count_convNd
 
 from quantize import QConv2d
 
@@ -536,3 +536,4 @@ def save(model, model_path):
 
 if __name__ == '__main__':
     main() 
+

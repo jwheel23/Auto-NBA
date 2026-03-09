@@ -196,7 +196,7 @@ if 'cifar' in C.dataset:
     C.beta_weight = 1
 
     # latency, customized for single-path FPGA predictor
-    C.latency_weight = 1e-10  # 1e-7 - 1e-14
+    C.latency_weight = 1.0  # 1e-7 - 1e-14
     C.fps_max = 400
     C.fps_min = 100
 
@@ -330,7 +330,7 @@ elif C.dataset == 'imagenet':
 
     C.update_hw_freq = 5
 
-    C.hw_aware_nas = False
+    C.hw_aware_nas = True
     ########################################
 
     C.niters_per_epoch = int(C.num_train_imgs // C.batch_size * 0.8)
@@ -365,7 +365,7 @@ elif C.dataset == 'imagenet':
     C.arch_update_frec = 1
 
     # hardware cost
-    C.efficiency_metric = 'flops' # 'flops'
+    C.efficiency_metric = 'latency' # 'flops'
 
     # hardware cost weighted coefficients
     C.enable_mix_lr = False
@@ -395,3 +395,4 @@ else:
     print('Wrong dataset.')
 
     sys.exit()
+
